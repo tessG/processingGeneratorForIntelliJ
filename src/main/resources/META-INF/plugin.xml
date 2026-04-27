@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>io.github.tessG.processing-generator</id>
+    <name>Processing Project Generator</name>
+    <vendor url="https://github.com/tessG">TessG</vendor>
+
+    <description><![CDATA[
+        <p>Generates a ready-to-run Processing (processing.org) Maven project inside IntelliJ IDEA.</p>
+        <ul>
+            <li>Auto-detects your Processing 4 installation on macOS, Windows and Linux</li>
+            <li>Installs <code>core.jar</code> into your local Maven repository automatically</li>
+            <li>Scaffolds a Maven project with the correct dependency and a starter sketch</li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <b>1.0.0</b>
+        <ul>
+            <li>Initial release</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action
+                id="Processing.NewProject"
+                class="io.github.tessG.processing.actions.NewProcessingProjectAction"
+                text="New Processing Project"
+                description="Generate a new Processing sketch project">
+            <add-to-group group-id="NewProjectOrModuleGroup" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
