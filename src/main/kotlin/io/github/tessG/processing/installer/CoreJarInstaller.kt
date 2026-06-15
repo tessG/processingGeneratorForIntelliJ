@@ -38,7 +38,6 @@ class CoreJarInstaller {
         } else {
             InstallResult.Failure(output.stderr)
         }
-        return InstallResult.Success
     }
 
     private fun findMvn(): String? {

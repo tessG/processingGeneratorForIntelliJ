@@ -14,8 +14,10 @@ import javax.swing.JComponent
 class NewProcessingProjectDialog : DialogWrapper(true) {
     val processingHomeField = TextFieldWithBrowseButton().apply {
         addBrowseFolderListener(
-            "Select Processing Installation", null, null,
-            FileChooserDescriptorFactory.createSingleFolderDescriptor()
+            null,
+            FileChooserDescriptorFactory.createSingleFolderDescriptor().apply {
+                title = "Select Processing Installation"
+            }
         )
     }
     val projectNameField = JBTextField("my-sketch")

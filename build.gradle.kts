@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.tessG"
-version = "1.0-SNAPSHOT"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -19,7 +19,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     intellijPlatform {
-        intellijIdeaCommunity("2024.1")
+        intellijIdeaCommunity("2024.3")
     }
 }
 
@@ -32,7 +32,7 @@ intellijPlatform {
         name = "Processing Project Generator"
         ideaVersion {
             sinceBuild = "241"
-            untilBuild = "251.*"
+            untilBuild = provider { null }
         }
     }
 }

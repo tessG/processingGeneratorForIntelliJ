@@ -66,8 +66,9 @@ class NewProcessingProjectAction : AnAction() {
                         .openProjects.any { it.basePath == config.projectRoot.toString() }
 
                     if (!alreadyOpen) {
-                        val project = com.intellij.openapi.project.ProjectManager.getInstance()
-                            .loadAndOpenProject(config.projectRoot.toString()) ?: return@invokeLater
+                        val project = com.intellij.openapi.project.ex.ProjectManagerEx.getInstanceEx()
+                            .openProject(config.projectRoot, com.intellij.ide.impl.OpenProjectTask())
+                            ?: return@invokeLater
 
                         val sketchFile = config.projectRoot
                             .resolve("src/main/java/${config.groupId.replace('.', '/')}")
@@ -78,8 +79,8 @@ class NewProcessingProjectAction : AnAction() {
                             .refreshAndFindFileByIoFile(sketchFile)
 
                         if (vFile != null) {
-                            com.intellij.openapi.fileEditor.FileEditorManager.getInstance(project!!)
-                                .openFile(vFile)
+                            com.intellij.openapi.fileEditor.FileEditorManager.getInstance(project)
+                                .openFile(vFile, true)
                         }
                     }
                 }

@@ -14,10 +14,6 @@ object ProjectGenerator {
     )
 
     fun generate(config: ProjectConfig) {
-        com.intellij.openapi.application.ApplicationManager.getApplication().invokeLater {
-            com.intellij.openapi.project.ProjectManager.getInstance()
-                .loadAndOpenProject(config.projectRoot.toString())
-        }
         Files.createDirectories(config.projectRoot)
         writePom(config)
         writeSketch(config)
